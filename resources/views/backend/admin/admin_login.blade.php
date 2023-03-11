@@ -23,6 +23,9 @@
                         </ul>
                     </div>
                 @endif
+                @if(Session::has('error-message'))
+                    <p class="alert alert-danger">{{ Session::get('error-message') }}</p> 
+                @endif
                 <form action="{{ route('admin.login') }}" method="POST">
                     @csrf
                         <div class="mb-3">
