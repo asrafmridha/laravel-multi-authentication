@@ -25,4 +25,7 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::get('admin/login', [AdminController::class, 'adminLoginForm'])->name('admin.login.form');
-Route::get('admin/dashboard', [DashboardController::class, 'adminDashboard'])->name('admin.dashboard');
+
+Route::group(['middleware' => 'admin'], function () {
+    Route::get('admin/dashboard', [DashboardController::class, 'adminDashboard'])->name('admin.dashboard');
+});
