@@ -11,4 +11,14 @@ class AdminController extends Controller
     {
         return view('backend.admin.admin_login');
     }
+
+    public function adminLogin(Request $request)
+    {
+        $request->validate([
+            'email'     => 'required|email',
+            'password'  => 'required',
+
+        ]);
+        dd($request->all());
+    }
 }
